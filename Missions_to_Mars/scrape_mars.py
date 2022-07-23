@@ -61,9 +61,11 @@ def scrape():
     # Mars facts table
     tables = pd.read_html(url_facts)
     mars_facts = tables[1]
+    #getting rid of column headers
+    mars_facts = mars_facts.rename(columns = {0:'',1:''})
 
     #convert to html string for table
-    mars_facts_table = mars_facts.to_html()
+    mars_facts_table = mars_facts.to_html(index=False)
     
     # Mars Hemispheres
     
