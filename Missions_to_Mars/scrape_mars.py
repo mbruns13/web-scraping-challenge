@@ -55,11 +55,11 @@ def scrape():
     
     # URL to scrape
     url_facts = 'https://galaxyfacts-mars.com/'
+    
     # Retrieve page with the requests module
-    html_facts = requests.get(url_facts)
-
+    # html_facts = requests.get(url_facts)
     # Create BeautifulSoup object; parse with 'html.parser'
-    soup_facts = BeautifulSoup(html_facts.text, 'html.parser')
+    # soup_facts = BeautifulSoup(html_facts.text, 'html.parser')
     #results_facts = soup_facts.find('table', class_="table-striped")
     
     # Mars facts table
