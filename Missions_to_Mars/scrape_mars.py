@@ -105,10 +105,9 @@ def scrape():
         hemisphere_image_urls.append({"title":headers[counter],"img_url":images[counter]})
         counter = counter+1
 
+    mars_data = {"newsTitle":news_title, "newsParagraph":news_p, "image_url":featured_image_url, "marsTable":mars_facts_table, "hemisphereImages":hemisphere_image_urls}
+
     browser.quit()
 
-    data = {"newsTitle":news_title, "newsParagraph":news_p, "image_url":featured_image_url, "marsTable":mars_facts_table, "hemisphereImages":hemisphere_image_urls}
-
-    quit
-
-    return data
+    return mars_data
+# mars_data = scrape()
