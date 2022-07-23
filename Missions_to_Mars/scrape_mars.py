@@ -24,7 +24,7 @@ def scrape():
     news_title = results_news.text
     
     # find paragraph text for article
-    results_news_p = soup.find('div', class_="article_teaser_body")
+    results_news_p = soup_news.find('div', class_="article_teaser_body")
     news_p = results_news_p.text
     
     # quit browser scraping for Mars News Site
@@ -45,8 +45,8 @@ def scrape():
     soup_image = BeautifulSoup(html_image, 'html.parser')
     
     #find img src and build full url string
-    results_img = soup.find('img', class_="headerimage")
-    featured_image_url = f"{url}{results_img['src']}"
+    results_img = soup_image.find('img', class_="headerimage")
+    featured_image_url = f"{url_image}{results_img['src']}"
     
     # quit browser scraping for JPL Mars Space Images
     browser.quit()
@@ -60,14 +60,14 @@ def scrape():
 
     # Create BeautifulSoup object; parse with 'html.parser'
     soup_facts = BeautifulSoup(html_facts.text, 'html.parser')
-    results_facts = soup_facts.find('table', class_="table-striped")
+    #results_facts = soup_facts.find('table', class_="table-striped")
     
     # Mars facts table
-    tables = pd.read_html(url)
+    tables = pd.read_html(url_facts)
     mars_facts = tables[1]
 
     #convert to html string for table
-    mars_facts.to_html()
+    mars_facts_table = mars_facts.to_html()
     
     # Mars Hemispheres
     
@@ -79,6 +79,7 @@ def scrape():
         {"title": "Syrtis Major Hemisphere", "img_url": "https://marshemispheres.com/images/555e6403a6ddd7ba16ddb0e471cadcf7_syrtis_major_enhanced.tif_full.jpg"},
     ]
 
-    
+    data = {"newsTitle":news_title, "newsParagraph":news_p, "image_url":featured_image_url, "marsTable":mars_facts_table, "hemisphereImages":hemisphere_image_urls}
 
+    return data
 
