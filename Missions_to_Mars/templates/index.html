@@ -24,7 +24,9 @@
         <div class="row justify-content-between">
             <div class="col-md-7">
                 <h2 class="heading">Featured Mars Image</h2>
-                <img src={{ mars.image_url }} alt="Featured Mars Image from https://spaceimages-mars.com/">
+                <a href={{ mars.image_url }}>
+                    <img src={{ mars.image_url }} alt="Featured Mars Image from https://spaceimages-mars.com/">
+                </a>
             </div>
             <div class="col-md-4">
                 <h2>Mars Facts</h2>
@@ -42,7 +44,9 @@
             {% for h in mars.hemisphereImages %}
             <div class="col-md-3">
                 <div class="card">
-                    <img class="card-img-top" alt={{ h.title }} src={{ h.img_url }}>
+                    <a href={{ h.img_url }}>
+                        <img class="card-img-top" alt={{ h.title }} src={{ h.img_url }}>
+                    </a>
                     <div class="card-block">
                         <h4>{{ h.title }}</h3>
                     </div>
